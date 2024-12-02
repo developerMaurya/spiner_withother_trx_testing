@@ -1,0 +1,675 @@
+<style>
+    .statistics-container {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    .title {
+        font-size: 18px;
+        /* margin-bottom: 20px; */
+        text-align: left;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .label {
+        font-weight: bold;
+        width: 20%;
+    }
+
+    .data {
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .circle {
+        width: 30px;
+        height: 25px;
+        line-height: 25px;
+        border-radius: 50%;
+        /* background-color: red; */
+        border: 1px solid red;
+        color: black;
+        text-align: center;
+        margin-right: 5px;
+    }
+
+
+    .plain-text {
+        margin-right: 10px;
+    }
+</style>
+
+<div data-v-a9660e98="" class="tab c-row c-row-between">
+    <div data-v-a9660e98="" class="li c-row c-row-center">
+        <span data-v-a9660e98="" class="txt action">
+            Game History
+        </span>
+    </div>
+    <div data-v-a9660e98="" class="li c-row c-row-center">
+        <span data-v-a9660e98="" class="txt"> My history </span>
+    </div>
+    <div data-v-a9660e98="" class="li c-row c-row-center">
+        <span data-v-a9660e98="" id="chartButton" class="txt"> Chart </span>
+    </div>
+</div>
+<script>
+    // JavaScript to handle button click and display data
+    document.getElementById('chartButton').addEventListener('click', function () {
+        console.log("abc.....")
+        var chartData = document.getElementById('chartData');
+        chartData.style.display = 'block'; // Display the data container
+    });
+</script>
+<div data-v-a9660e98="" class="con-box">
+    <div data-v-a9660e98="" class="list m-t-10">
+        <div data-v-a9660e98="" class="wrap">
+            <div data-v-a9660e98="" class="c-tc van-row">
+                <div data-v-a9660e98="" class="van-col van-col--4">
+                    Period
+                </div>
+                <div data-v-a9660e98="" class="van-col van-col--5">
+                    Block ID
+                </div>
+                <div data-v-a9660e98="" class="van-col van-col--5">
+                    Block time
+                </div>
+                <div data-v-a9660e98="" class="van-col van-col--6">
+                    Hash value
+                </div>
+                <div data-v-a9660e98="" class="van-col van-col--2">
+                    Result
+                </div>
+            </div>
+        </div>
+        <!-- <div data-v-a9660e98="">
+            <div data-v-a9660e98="" class="hb"></div>
+        </div> -->
+        <ul style="color: red" id="trx-data-list">
+        </ul>
+        <div data-v-a9660e98="" class="list-fooder"></div>
+    </div>
+    <div data-v-a9660e98="" class="page-nav c-row c-row-center c-tc">
+        <div data-v-a9660e98="" class="arr c-row c-row-middle-center block-click">
+            <i data-v-a9660e98="" class="van-icon van-icon-arrow-left icon" style="font-size: 20px">
+                <!---->
+            </i>
+        </div>
+        <div data-v-a9660e98="" class="number"></div>
+        <div data-v-a9660e98="" class="arr c-row c-row-middle-center action">
+            <i data-v-a9660e98="" class="van-icon van-icon-arrow icon action" style="font-size: 20px">
+                <!---->
+            </i>
+        </div>
+    </div>
+</div>
+
+<div data-v-a9660e98="" class="con-box p-b-20" style="display: none">
+    <div data-v-a9660e98="" class="c-row c-flew-end p-r-20">
+        <div data-v-a9660e98="" class="bettingMore c-tc c-row c-row-middle-center">
+            More<i data-v-a9660e98="" class="van-icon van-icon-arrow" style="color: rgb(84, 94, 104); font-size: 15px">
+                <!---->
+            </i>
+        </div>
+    </div>
+    <div data-v-a9660e98="" class="list m-t-10">
+        <div data-v-a9660e98="" class="p-t-5 p-b-5" id="history-order">
+
+        </div>
+        <div data-v-a9660e98="" class="list-fooder"></div>
+    </div>
+    <!---->
+    <div data-v-a9660e98="" class="page-nav c-row c-row-center c-tc">
+        <div data-v-a9660e98="" class="arr c-row c-row-middle-center">
+            <i data-v-a9660e98="" class="van-icon van-icon-arrow-left icon" style="font-size: 20px">
+                <!---->
+            </i>
+        </div>
+        <div data-v-a9660e98="" class="number"></div>
+        <div data-v-a9660e98="" class="arr c-row c-row-middle-center action">
+            <i data-v-a9660e98="" class="van-icon van-icon-arrow icon action" style="font-size: 20px">
+                <!---->
+            </i>
+        </div>
+    </div>
+</div>
+<div id="chartData" style="display: none;">
+    <div data-v-a9660e98="" class="c-tc van-row">
+        <div data-v-a9660e98="" class="van-col van-col--12"
+            style="background-color: brown; color: white; height: 40px;margin-top: 15px; padding-top: 15px;">Period
+        </div>
+        <div data-v-a9660e98="" class="van-col van-col--12"
+            style="background-color: brown; color: white;height: 40px;margin-top: 15px; padding-top: 15px;">Number</div>
+    </div>
+    <div class="title" style="margin-left: 10px; margin-top: 10px;">Statistic (last 100 Periods)</div>
+
+
+    <div class="row" style="padding: 10px;">
+        <div class="label">Winning number</div>
+        <div class="data">
+            <div class="circle" style="color: white;">0</div>
+            <div class="circle" style="color: white;">1</div>
+            <div class="circle" style="color: white;">2</div>
+            <div class="circle" style="color: white;">3</div>
+            <div class="circle" style="color: white;">4</div>
+            <div class="circle" style="color: white;">5</div>
+            <div class="circle" style="color: white;">6</div>
+            <div class="circle" style="color: white;">7</div>
+            <div class="circle" style="color: white;">8</div>
+            <div class="circle" style="color: white;">9</div>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 10px;">
+        <div class="label">Missing</div>
+        <div class="data" id="missing-data">
+            <span class="plain-text">10</span>
+            <span class="plain-text">3</span>
+            <span class="plain-text">4</span>
+            <span class="plain-text">6</span>
+            <span class="plain-text">21</span>
+            <span class="plain-text">7</span>
+            <span class="plain-text">2</span>
+            <span class="plain-text">10</span>
+            <span class="plain-text">23</span>
+            <span class="plain-text">9</span>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 10px;">
+        <div class="label">Avg missing</div>
+        <div class="data" id="avg-missing">
+            <span class="plain-text">9</span>
+            <span class="plain-text">8</span>
+            <span class="plain-text">6</span>
+            <span class="plain-text">11</span>
+            <span class="plain-text">13</span>
+            <span class="plain-text">6</span>
+            <span class="plain-text">7</span>
+            <span class="plain-text">9</span>
+            <span class="plain-text">8</span>
+            <span class="plain-text">19</span>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 5px;">
+        <div class="label">Frequency</div>
+        <div class="data" id="frequency">
+            <span class="plain-text">9</span>
+            <span class="plain-text">13</span>
+            <span class="plain-text">14</span>
+            <span class="plain-text">8</span>
+            <span class="plain-text">8</span>
+            <span class="plain-text">9</span>
+            <span class="plain-text">14</span>
+            <span class="plain-text">9</span>
+            <span class="plain-text">7</span>
+            <span class="plain-text">9</span>
+        </div>
+    </div>
+    <hr style="margin-top:20px">
+    <ul style="padding: 5px;" id="trx-data-list1">
+    </ul>
+    <div data-v-a9660e98="" class="page-nav c-row c-row-center c-tc">
+        <div data-v-a9660e98="" class="arr c-row c-row-middle-center" onclick="handleLeftClick()">
+            <i data-v-a9660e98="" class="van-icon van-icon-arrow-left icon" style="font-size: 20px">
+            </i>
+        </div>
+        <div data-v-a9660e98="" class="number1" id="page-indicator">1/1</div>
+        <div data-v-a9660e98="" class="arr c-row c-row-middle-center" onclick="handleRightClick()">
+            <i data-v-a9660e98="" class="van-icon van-icon-arrow icon action" style="font-size: 20px">
+            </i>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/js/client.js"></script>
+<script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+    integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+    crossorigin="anonymous"></script>
+
+
+
+<script>
+    // Function to handle the image click
+    function openUrl(url) {
+        window.location.href = url;
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        const socket = io();
+
+        // Listen for the 'data-server-trx-chart' event
+        socket.on('data-server-trx-chart', function (data) {
+            const trxData = data.data;
+            const missingDataSpans = document.querySelectorAll('#missing-data .plain-text');
+            let zeroSet = false;
+
+            // Update missing data based on result
+            const a = trxData[0].result;
+            missingDataSpans.forEach((span, index) => {
+                if (index === a) {
+                    if (span.textContent !== '0') {
+                        span.textContent = '0'; // Set to 0 where the index matches the result number
+                        zeroSet = true; // Mark that zero has been set
+                    }
+                }
+            });
+
+            // Update other spans with random values if zero was set
+            if (zeroSet) {
+                missingDataSpans.forEach((span, index) => {
+                    if (index !== a) {
+                        span.textContent = Math.floor(Math.random() * 25) + 1;
+                    }
+                });
+            }
+
+            // Clear previous data
+            const trxDataList = $('#trx-data-list1');
+            trxDataList.empty();
+
+            // Clear previous SVG lines
+            const svg = $('#line-connector');
+            svg.empty();
+
+            // Variables to store previous coordinates for line drawing
+            let previousX = null;
+            let previousY = null;
+
+            // Iterate over the array and create list items
+            trxData.forEach(item => {
+                const isBig = item.bigsmall === 'big';
+                const resultValue = isBig ? 'B' : 'S';
+                const resultNumber = parseInt(item.result, 10);
+
+                // Create list item with inline styles
+                let numbersHtml = '';
+                for (let i = 0; i <= 9; i++) {
+                    const isMatching = i === resultNumber;
+                    const numberStyle = `
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        line-height: 20px;
+                        text-align: center;
+                        border-radius: 50%;
+                        background-color: ${isMatching ? '#dc3545' : 'transparent'};
+                        color: ${isMatching ? 'white' : 'white'};
+                        font-size: 14px;
+                        margin-right: 5px;
+                        position: relative;
+                    `;
+                    numbersHtml += `<span style="${numberStyle}" data-index="${i}">${i}</span>`;
+                }
+
+                const listItem = `
+                    <li style="margin-bottom: 10px;">
+                        <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0;">
+                            <div class="van-col van-col--18" style="flex: 1; color:white;">
+                                ${item.period}
+                            </div>
+                            <div class="van-col van-col--60" style="flex: 4; display: flex;  justify-content: space-between; padding-left: 10px;">
+                                ${numbersHtml}
+                            </div>
+                            <div class="van-col van-col--6" style="flex: 1; color:white; text-align: right;">
+                                ${resultValue}
+                            </div>
+                        </div>
+                        <hr style="margin: 10px 0;">
+                    </li>
+                `;
+
+                trxDataList.append(listItem);
+
+                // Draw the line connecting the previous and current result
+                const currentResultElement = trxDataList.find(`[data-index="${resultNumber}"]`).last();
+                const currentX = currentResultElement.offset().left + currentResultElement.outerWidth() / 2;
+                const currentY = currentResultElement.offset().top + currentResultElement.outerHeight() / 2 + trxDataList.scrollTop();
+
+                // Draw a line only if previous coordinates exist
+                if (previousX !== null && previousY !== null) {
+                    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    line.setAttribute("x1", previousX);
+                    line.setAttribute("y1", previousY);
+                    line.setAttribute("x2", currentX);
+                    line.setAttribute("y2", currentY);
+                    line.setAttribute("stroke", "red");
+                    line.setAttribute("stroke-width", "2");
+                    svg.append(line);
+                }
+
+                // Update previous coordinates
+                previousX = currentX;
+                previousY = currentY;
+            });
+        });
+    });
+</script>
+
+<svg id="line-connector"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></svg>
+
+<script>
+    $(document).ready(function () {
+
+        socket.on('updateValues', data => {
+            const { avgMissing, frequency } = data;
+
+            const avgMissingContainer = document.getElementById('avg-missing');
+            const frequencyContainer = document.getElementById('frequency');
+
+            avgMissingContainer.querySelectorAll('.plain-text').forEach((span, index) => {
+                span.textContent = avgMissing[index];
+            });
+
+            frequencyContainer.querySelectorAll('.plain-text').forEach((span, index) => {
+                span.textContent = frequency[index];
+            });
+        });
+    })
+</script>
+<!-- <script>
+    const itemsPerPage = 10;
+    let currentPage = 1;
+    let totalPages = 1;
+    let trxData = [];
+
+    $(document).ready(function () {
+        const socket = io();
+
+        socket.on('data-server-trx-chartall', function (data) {
+            trxData = data.data;
+            // console.log("trxData....", trxData);
+            totalPages = Math.ceil(trxData.length / itemsPerPage);
+            // console.log("totalpages...", totalPages);
+
+            // Update page indicator
+            updatePageIndicator();
+
+            // Initialize to display the first page of data
+            currentPage = 1;
+            displayPage(currentPage);
+        });
+    });
+
+    function updatePageIndicator() {
+        document.getElementById('page-indicator').innerText = `${currentPage}/${totalPages}`;
+    }
+
+    function displayPage(page) {
+        // Logic to display data for the given page
+        // This can include slicing the trxData array based on the current page
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageData = trxData.slice(startIndex, endIndex);
+
+        // Display pageData on the UI (You need to implement this part)
+        console.log("Displaying data for page:", page, pageData);
+    }
+
+    function handleLeftClick() {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePageIndicator();
+            displayPage(currentPage);
+        }
+        console.log('Left button clicked, new page:', currentPage);
+    }
+
+    function handleRightClick() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePageIndicator();
+            displayPage(currentPage);
+        }
+        console.log('Right button clicked, new page:', currentPage);
+    }
+</script> -->
+
+<script>
+    const itemsPerPage = 10;
+    let currentPage = 1;
+    let totalPages = 1;
+    let trxData = [];
+
+    $(document).ready(function () {
+        const socket = io();
+
+        socket.on('data-server-trx-chartall', function (data) {
+            trxData = data.data;
+            totalPages = Math.ceil(trxData.length / itemsPerPage);
+
+            currentPage = 1; // Initialize to display the first page of data
+            updatePageIndicator();
+            displayPage(currentPage);
+        });
+    });
+
+    function updatePageIndicator() {
+        document.getElementById('page-indicator').innerText = `${currentPage}/${totalPages}`;
+    }
+
+    function displayPage(page) {
+        // Clear previous data
+        const trxDataList = $('#trx-data-list1');
+        trxDataList.empty();
+        $('#line-connector').empty(); // Clear previous lines
+
+        // Slice the data for the current page
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageData = trxData.slice(startIndex, endIndex);
+
+        // Iterate over the array and create list items
+        pageData.forEach(item => {
+            const isBig = item.bigsmall === 'big';
+            const resultValue = isBig ? 'B' : 'S';
+            const resultNumber = parseInt(item.result, 10);
+
+            // Create list item with inline styles
+            let numbersHtml = '';
+            for (let i = 0; i <= 9; i++) {
+                const isMatching = i === resultNumber;
+                const numberStyle = `
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    border-radius: 50%;
+                    background-color: ${isMatching ? '#dc3545' : 'transparent'};
+                    color: ${isMatching ? 'white' : 'black'};
+                    font-size: 14px;
+                    margin-right: 5px;
+                    position: relative;
+                `;
+                numbersHtml += `<span class="number-circle" style="${numberStyle}" data-index="${i}">${i}</span>`;
+            }
+
+            const listItem = `
+                <li style="margin-bottom: 10px;">
+                    <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0;">
+                        <div class="van-col van-col--18" style="flex: 1; color:black;">
+                            ${item.period}
+                        </div>
+                        <div class="van-col van-col--60" style="flex: 4; display: flex; justify-content: space-between; padding-left: 10px;">
+                            ${numbersHtml}
+                        </div>
+                        <div class="van-col van-col--6" style="flex: 1; color:black; text-align: right;">
+                            ${resultValue}
+                        </div>
+                    </div>
+                    <hr style="margin: 10px 0;">
+                </li>
+            `;
+
+            trxDataList.append(listItem);
+        });
+
+        drawLines(); // Call to draw lines after rendering data
+    }
+
+    function drawLines() {
+        const svg = document.getElementById('line-connector');
+        const circles = document.querySelectorAll('.number-circle');
+        let previousCircle = null;
+
+        circles.forEach(circle => {
+            if (circle.style.backgroundColor === 'rgb(220, 53, 69)') { // Check if the circle is red
+                if (previousCircle) {
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    const prevRect = previousCircle.getBoundingClientRect();
+                    const currentRect = circle.getBoundingClientRect();
+
+                    // Calculate positions relative to the container
+                    const svgRect = svg.getBoundingClientRect();
+                    const x1 = prevRect.left + prevRect.width / 2 - svgRect.left;
+                    const y1 = prevRect.top + prevRect.height / 2 - svgRect.top;
+                    const x2 = currentRect.left + currentRect.width / 2 - svgRect.left;
+                    const y2 = currentRect.top + currentRect.height / 2 - svgRect.top;
+
+                    line.setAttribute('x1', x1);
+                    line.setAttribute('y1', y1);
+                    line.setAttribute('x2', x2);
+                    line.setAttribute('y2', y2);
+                    line.setAttribute('stroke', 'red');
+                    line.setAttribute('stroke-width', '2');
+
+                    svg.appendChild(line);
+                }
+                previousCircle = circle;
+            }
+        });
+    }
+
+    function handleLeftClick() {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePageIndicator();
+            displayPage(currentPage);
+        }
+    }
+
+    function handleRightClick() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePageIndicator();
+            displayPage(currentPage);
+        }
+    }
+</script>
+
+<!-- <script>
+    const itemsPerPage = 10;
+    let currentPage = 1;
+    let totalPages = 1;
+    let trxData = [];
+
+    $(document).ready(function () {
+        const socket = io();
+
+        socket.on('data-server-trx-chartall', function (data) {
+            trxData = data.data;
+            console.log("trxData....", trxData);
+            totalPages = Math.ceil(trxData.length / itemsPerPage);
+            console.log("totalpages...", totalPages);
+
+            currentPage = 1; // Initialize to display the first page of data
+            updatePageIndicator();
+            displayPage(currentPage);
+        });
+    });
+
+    function updatePageIndicator() {
+        document.getElementById('page-indicator').innerText = `${currentPage}/${totalPages}`;
+    }
+
+    function displayPage(page) {
+        // Clear previous data
+        const trxDataList = $('#trx-data-list1');
+        trxDataList.empty();
+
+        // Slice the data for the current page
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageData = trxData.slice(startIndex, endIndex);
+
+        // Iterate over the array and create list items
+        pageData.forEach(item => {
+            const isBig = item.bigsmall === 'big';
+            const resultValue = isBig ? 'B' : 'S';
+            const resultNumber = parseInt(item.result, 10);
+
+            // Create list item with inline styles
+            let numbersHtml = '';
+            for (let i = 0; i <= 9; i++) {
+                const isMatching = i === resultNumber;
+                const numberStyle = `
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    border-radius: 50%;
+                    background-color: ${isMatching ? '#dc3545' : 'transparent'};
+                    color: ${isMatching ? 'white' : 'black'};
+                    font-size: 14px;
+                    margin-right: 5px;
+                    position: relative;
+                `;
+                numbersHtml += `<span style="${numberStyle}" data-index="${i}">${i}</span>`;
+            }
+
+            const listItem = `
+                <li style="margin-bottom: 10px;">
+                    <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0;">
+                        <div class="van-col van-col--18" style="flex: 1; color:black;">
+                            ${item.period}
+                        </div>
+                        <div class="van-col van-col--60" style="flex: 4; display: flex; justify-content: space-between; padding-left: 10px;">
+                            ${numbersHtml}
+                        </div>
+                        <div class="van-col van-col--6" style="flex: 1; color:black; text-align: right;">
+                            ${resultValue}
+                        </div>
+                    </div>
+                    <hr style="margin: 10px 0;">
+                </li>
+            `;
+
+            trxDataList.append(listItem);
+        });
+    }
+
+    function handleLeftClick() {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePageIndicator();
+            displayPage(currentPage);
+        }
+        console.log('Left button clicked, new page:', currentPage);
+    }
+
+    function handleRightClick() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePageIndicator();
+            displayPage(currentPage);
+        }
+        console.log('Right button clicked, new page:', currentPage);
+    }
+</script> -->

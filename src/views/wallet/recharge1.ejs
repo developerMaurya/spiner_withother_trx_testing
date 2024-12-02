@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html translate="no" data-dpr="1" style="font-size: 48.16px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex,nofollow">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <title>DELTIN JAQK</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    <link rel="stylesheet" href="../index_files/index-96409872.css">
+    <link rel="stylesheet" href="../assets/css/index-7cb00ae8.css">
+    <link rel="stylesheet" href="../assets/css/Instructions-171cc2e8.css">
+    <link href="/css/wallet/main.css" rel="stylesheet" />
+    <link href="/css/wallet/chunk_2-1.css" rel="stylesheet" />
+    <link href="/css/wallet/chunk_2-2.css" rel="stylesheet" />
+    <link href="/css/wallet/chunk_2-3.css" rel="stylesheet" />
+    <link href="/css/wallet/recharge_styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/images/bitbug_favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+        integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+
+    <style>
+        .navbar[data-v-106b99c8] {
+            background: linear-gradient(90deg, rgb(43, 50, 112) 0%, rgb(43, 50, 112) 100%) !important;
+        }
+
+        .mian .selectBox .colorBox[data-v-67caa467] {
+            background: linear-gradient(90deg, #22275b 0%, #22275b 100%) !important;
+        }
+
+        .mian .selectBox .pay-box .list .item .img[data-v-67caa467] {
+            margin: 0 auto .13333rem;
+            width: 1.2rem !important;
+            height: 1.2rem !important;
+        }
+
+        .mian .selectBox .pay-box .list .item .name[data-v-67caa467] {
+            color: #ffffff !important;
+            font-size: .37333rem;
+        }
+    </style>
+
+
+</head>
+
+<body style="font-size: 12px;">
+    <div id="app">
+        <div data-v-67caa467="" class="mian">
+            <!-- Header  -->
+            <div data-v-106b99c8="" data-v-67caa467="" class="navbar">
+                <div data-v-106b99c8="" class="navbar-left" onclick="location.href='/mian'">
+                    <div data-v-106b99c8="" class="bank c-row c-row-middle-center">
+                        <i class="fa-light fa-angle-left fa-fade fa-xl center" style="color: #FFF"></i>
+                    </div>
+                </div>
+                <div data-v-106b99c8="" class="navbar-title"> Deposit </div>
+                <div data-v-106b99c8="" class="navbar-right">
+                    <div data-v-11ffe290="" data-v-106b99c8="" class="c-row">
+                        <i class="fa-fade fa center" style="color: #FFF">
+                            <img data-v-11ffe290="" data-v-106b99c8="" src="/images/audio.webp"
+                                style="width:.66667rem;height:.66667rem">
+                        </i>
+                    </div>
+                </div>
+            </div>
+            <!-- Header  -->
+
+
+
+
+
+            <div data-v-67caa467="" class="selectBox">
+                <div data-v-67caa467="" class="colorBox"></div>
+
+                <div data-v-67caa467="" class="txtBox c-row c-row-middle">
+
+                    <div data-v-618c2f5a="" data-v-e0f4cdd7="" class="balanceAssets">
+                        <div data-v-618c2f5a="" class="balanceAssets__header">
+                            <div data-v-618c2f5a="" class="balanceAssets__header__left">
+                                <img data-v-618c2f5a="" src="/assets/png/balance-d5880fa1.png">
+                                Total Balance
+                            </div>
+                        </div>
+                        <div data-v-618c2f5a="" class="balanceAssets__main">
+                            <!-- Money Amount  -->
+                            <div data-v-67caa467="" class="money">
+                                <div data-v-67caa467="">
+                                    ₹ <span data-v-67caa467="" class="p-l-5" id="money_amount_display">Loading...</span>
+                                </div>
+                            </div>
+                            <!-- Money Amount -->
+                            <!-- Reload Button -->
+                            <div data-v-67caa467="" class="van-image img m-l-10" style="width: 18px; height: 18px;"
+                                id="reload_money_amount_button">
+                                <img src="/images/reload.png" class="van-image__img">
+                            </div>
+                            <!-- Reload Button -->
+                        </div>
+                        <div data-v-618c2f5a="" class="balanceAssets__tip">
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div data-v-67caa467="" class="c-row c-row-middle">
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <!-- Payment Methods -->
+                <div data-v-67caa467="" class="pay-box">
+                    <!-- Payment Methods Label -->
+                    <div data-v-67caa467="" class="title c-row c-row-middle">
+                        <div data-v-67caa467="" class="van-image" style="width: 20px; height: 20px;">
+                            <img src="/images/htmls2.png" class="van-image__img">
+                        </div>
+                        <span data-v-67caa467="" class="m-l-10"> Payment Method </span>
+                    </div>
+                    <!-- Payment Methods Label -->
+
+                    <!-- Payment Methods Options -->
+                    <div data-v-67caa467="" class="list c-row c-flex-warp m-t-10" id="payment_methods_options">
+                  
+
+                        <!--      <div data-v-67caa467="" class="item" type="wow_pay">
+                            <img data-v-67caa467="" width="20px" height="20px" src="/images/recharge_TRANSFER_red.webp"
+                                class="img">
+                            <div data-v-67caa467="" class="name">GO Pay</div>
+
+                            <div data-v-67caa467="" class="icon">
+                                <i data-v-67caa467="" class="van-icon van-icon-success"
+                                    style="color: rgb(255, 255, 255); font-size: 14px;"> </i>
+                            </div>
+                        </div>  -->
+
+                        
+<img src="/images/qrs.jpeg"/ width="400px" height=500px">
+                      
+                        <!-- <div data-v-67caa467="" class="item disabled" type="usdt">
+                            <img data-v-67caa467="" width="20px" height="20px" src="/images/recharge_TRANSFER_red.webp"
+                                class="img">
+                            <div data-v-67caa467="" class="name">USDT</div>
+                            <div data-v-67caa467="" class="coming_soon">coming soon</div>
+
+                            <div data-v-67caa467="" class="icon">
+                                <i data-v-67caa467="" class="van-icon van-icon-success"
+                                    style="color: rgb(255, 255, 255); font-size: 14px;"> </i>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- Payment Methods Options -->
+                </div>
+                <!-- Payment Methods -->
+
+                <div data-v-67caa467="" class="pay-box">
+
+                    <div data-v-67caa467="">
+                        <div data-v-67caa467="">
+                            <!-- Money Amount Field Label -->
+                            <div data-v-67caa467="" class="title c-row c-row-middle c-row-between">
+                                <div data-v-67caa467="" class="c-row">
+                                    <div data-v-67caa467="" class="van-image" style="width: 20px; height: 20px;">
+                                        <img src="/images/htmls2.png" class="van-image__img" style="margin-top:15px;">
+                                    </div>
+                                    <span data-v-67caa467="" id="inr" class="m-l-10"  style="margin-top:15px;">INR ₹ / USDT</span>
+                                </div>
+                            </div>
+                            <!-- Money Amount Field Label -->
+
+                            <!-- Money Amount Field Input -->
+                            <div data-v-67caa467="" class="box numberSize c-row c-row-between c-row-middle p-l-10">
+                                <div data-v-67caa467="" id="inr_input" class="fuhao">₹/$</div>
+                                <div data-v-67caa467="" class="input van-cell van-field">
+                                    <div class="van-cell__value van-cell__value--alone van-field__value">
+                                        <div class="van-field__body">
+                                            <input type="tel" id="money_amount_input" value="300" inputmode="numeric"
+                                                name="amount" placeholder="Please enter the amount"
+                                                class="van-field__control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Money Amount Field Input -->
+
+                            <!-- Quick Money Amount Options -->
+                            <div id="quick_money_options" data-v-67caa467=""
+                                class="list m-t-10 c-row c-row-between c-flex-warp">
+                                <div data-v-67caa467="" data-money="300" class="li action">
+                                    <span data-v-67caa467="" class="number">300</span>
+                                </div>
+                                <div data-v-67caa467="" data-money="500" class="li">
+                                    <span data-v-67caa467="" class="number">500</span>
+                                </div>
+                                <div data-v-67caa467="" data-money="1000" class="li">
+                                    <span data-v-67caa467="" class="number">1K</span>
+                                </div>
+                                <div data-v-67caa467="" data-money="10000" class="li">
+                                    <span data-v-67caa467="" class="number">10K</span>
+                                </div>
+                                <div data-v-67caa467="" data-money="100000" class="li">
+                                    <span data-v-67caa467="" class="number">100K</span>
+                                </div>
+                                <div data-v-67caa467="" data-money="1000000" class="li">
+                                    <span data-v-67caa467="" class="number">1M</span>
+                                </div>
+                            </div>
+                            <!-- Quick Money Amount Options -->
+
+                            <!-- Notice And Information -->
+                            <div data-v-67caa467="">
+                                <div data-v-67caa467="" class="des">
+                                    * The Bank payment gateway offers an additional 5% bonus on Every deposit.
+                                </div>
+                                <div data-v-67caa467="" class="des">
+                                    If you transfer the wrong amount as instructed, the funds will be lost, and our
+                                    company will not be held responsible! </div>
+                                <div data-v-67caa467="" class="des">
+                                    * Note: You must deposit the exact amount as instructed in the order. The system
+                                    will automatically update the bonus funds.
+                                </div>
+                            </div>
+                            <!-- Notice And Information -->
+
+                            <!-- Deposit Amount Button -->
+                            <div data-v-67caa467="" class="btn-list c-row c-row-center m-t-30">
+                                <!---->
+                                <div data-v-67caa467="" class="item flex-cover">
+
+                                    <button data-v-67caa467=""
+                                        class="next-btn van-button van-button--default van-button--normal van-button--block van-button--round"
+                                        id="deposit_fund_btn">
+
+                                        <div data-v-67caa467="" class="van-button__content">
+                                            <span data-v-67caa467="" class="van-button__text">Deposit Fund</span>
+                                        </div>
+                                    </button>
+
+
+                                </div>
+                            </div>
+                            <!-- Deposit Amount Button -->
+
+                            </br>
+                            <div data-v-832238e6="" data-v-e0f4cdd7="" class="Recharge__container-intro">
+                                <div data-v-832238e6="" class="Recharge__container-intro__title">
+                                    <img data-v-832238e6="" src="/assets/png/bookicon-12cde4d4.png" alt="">
+                                    <p data-v-832238e6="">
+                                        Recharge instructions
+                                    </p>
+                                </div>
+                                <div data-v-832238e6="" class="Recharge__container-intro__lists">
+                                    <!---->
+                                    <!---->
+                                    <!---->
+                                    <div data-v-832238e6="" class="item">
+                                        <p data-v-832238e6="">
+                                            If the transfer time is up, please fill out the deposit form again.
+                                        </p>
+                                        <p data-v-832238e6="">
+                                            The transfer amount must match the order you created, otherwise the money
+                                            cannot be credited successfully.
+                                        </p>
+                                        <p data-v-832238e6="">
+                                            If you transfer the wrong amount, our company will not be responsible
+                                            for the lost amount!
+                                        </p>
+                                        <!---->
+                                        <p data-v-832238e6="">
+                                            Note: do not cancel the deposit order after the money has been transferred.
+                                        </p>
+                                    </div>
+                                    <!---->
+                                    <!---->
+                                    <!---->
+                                    <!---->
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="previous_payment_background" id="previous_payment_popup">
+        <div class="previous_payment_popup">
+            <h3 class="previous_payment_popup_message">You have a pending payment left what do you want to do with that?
+            </h3>
+            <button class="pay_now" id="pay_now">Pay Now</button>
+            <button class="cancel_payment" id="cancel_payment">Cancel and Create New Deposit</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/client.js"></script>
+
+    <script>
+        let MoneyAmountDisplay = document.querySelector("#money_amount_display")
+        let ReloadMoneyAmountButton = document.querySelector("#reload_money_amount_button")
+        let PaymentMethodOptions = document.querySelector("#payment_methods_options")
+        let MoneyAmountInput = document.querySelector("#money_amount_input")
+        let QuickMoneyOptions = document.querySelector("#quick_money_options")
+        let DepositFundButton = document.querySelector("#deposit_fund_btn")
+
+        const PaymentMethodsMap = {
+            UPI_GATEWAY: "upi_gateway",
+            WOW_PAY: "wow_pay",
+            MANUAL_PAY: "manual_pay",
+            USDT_MANUAL: "usdt_manual",
+            USDT: "usdt",
+        }
+
+        const QuickMoneyForRegular = `
+            <div data-v-67caa467="" data-money="300" class="li action">
+                <span data-v-67caa467="" class="number">300</span>
+            </div>
+            <div data-v-67caa467="" data-money="500" class="li">
+                <span data-v-67caa467="" class="number">500</span>
+            </div>
+            <div data-v-67caa467="" data-money="1000" class="li">
+                <span data-v-67caa467="" class="number">1K</span>
+            </div>
+            <div data-v-67caa467="" data-money="10000" class="li">
+                <span data-v-67caa467="" class="number">10K</span>
+            </div>
+            <div data-v-67caa467="" data-money="100000" class="li">
+                <span data-v-67caa467="" class="number">100K</span>
+            </div>
+            <div data-v-67caa467="" data-money="1000000" class="li">
+                <span data-v-67caa467="" class="number">1M</span>
+            </div>
+        `
+
+        const QuickMoneyForUSDT = `
+            <div data-v-67caa467="" data-money="100" class="li action">
+                <span data-v-67caa467="" class="number">100$</span>
+            </div>
+            <div data-v-67caa467="" data-money="500" class="li">
+                <span data-v-67caa467="" class="number">500$</span>
+            </div>
+            <div data-v-67caa467="" data-money="1000" class="li">
+                <span data-v-67caa467="" class="number">1000$</span>
+            </div>
+            <div data-v-67caa467="" data-money="5000" class="li">
+                <span data-v-67caa467="" class="number">5000$</span>
+            </div>
+            <div data-v-67caa467="" data-money="10000" class="li">
+                <span data-v-67caa467="" class="number">10000$</span>
+            </div>
+            <div data-v-67caa467="" data-money="50000" class="li">
+                <span data-v-67caa467="" class="number">50000$</span>
+            </div>
+        `
+
+        let selectedPaymentMethod = ''
+        let inputMoney = 0
+
+        const alertMessage = (text) => {
+            const msg = document.createElement('div');
+            msg.setAttribute('data-v-1dcba851', '');
+            msg.className = 'msg';
+
+            const msgContent = document.createElement('div');
+            msgContent.setAttribute('data-v-1dcba851', '');
+            msgContent.className = 'msg-content v-enter-active v-enter-to';
+            msgContent.style = '';
+            msgContent.textContent = text;
+
+            msg.appendChild(msgContent);
+            document.body.appendChild(msg);
+
+            setTimeout(() => {
+                msgContent.classList.remove('v-enter-active', 'v-enter-to');
+                msgContent.classList.add('v-leave-active', 'v-leave-to');
+
+                setTimeout(() => {
+                    document.body.removeChild(msg);
+                }, 100);
+            }, 1000);
+        }
+
+
+        const handleSetTotalBalance = async () => {
+            MoneyAmountDisplay.textContent = "Loading..."
+
+            try {
+                const response = await axios.get('/api/webapi/GetUserInfo');
+                const user = response?.data?.data
+
+                if (user === null || user === undefined || user?.money_user === undefined || user?.money_user === null) {
+                    throw Error("Something went wrong while fetching the user wallet balance!")
+                }
+
+                MoneyAmountDisplay.textContent = user?.money_user
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
+
+        const handleCheckAndSelectPaymentMethod = () => {
+            let paymentMethodList = Array.from(PaymentMethodOptions.children)
+
+            paymentMethodList = paymentMethodList.filter((item) => {
+                return !Array.from(item.classList).includes("disabled")
+            })
+
+            let currentPaymentMethod = paymentMethodList.find((item) => {
+                return Array.from(item.classList).includes("action")
+            })
+
+            switch (currentPaymentMethod.getAttribute("type")) {
+                case PaymentMethodsMap.UPI_GATEWAY:
+                    inputMoney = '300'
+                    MoneyAmountInput.value = '300'
+                    selectedPaymentMethod = PaymentMethodsMap.UPI_GATEWAY
+                    QuickMoneyOptions.innerHTML = QuickMoneyForRegular
+                    break;
+                case PaymentMethodsMap.WOW_PAY:
+                    inputMoney = '300'
+                    MoneyAmountInput.value = '300'
+                    selectedPaymentMethod = PaymentMethodsMap.WOW_PAY
+                    QuickMoneyOptions.innerHTML = QuickMoneyForRegular
+                    break;
+                case PaymentMethodsMap.MANUAL_PAY:
+                    inputMoney = '300'
+                    MoneyAmountInput.value = '300'
+                    selectedPaymentMethod = PaymentMethodsMap.MANUAL_PAY
+                    QuickMoneyOptions.innerHTML = QuickMoneyForRegular
+                    break;
+                case PaymentMethodsMap.USDT_MANUAL:
+                    inputMoney = '10'
+                    MoneyAmountInput.value = '10'
+                    selectedPaymentMethod = PaymentMethodsMap.USDT_MANUAL
+                    QuickMoneyOptions.innerHTML = QuickMoneyForUSDT
+                    break;
+                case PaymentMethodsMap.USDT:
+                    inputMoney = '10'
+                    MoneyAmountInput.value = '10'
+                    selectedPaymentMethod = PaymentMethodsMap.USDT
+                    QuickMoneyOptions.innerHTML = QuickMoneyForUSDT
+                    break;
+                default:
+                    inputMoney = '300'
+                    MoneyAmountInput.value = '300'
+                    selectedPaymentMethod = PaymentMethodsMap.UPI_GATEWAY
+                    QuickMoneyOptions.innerHTML = QuickMoneyForRegular
+                    break;
+            }
+
+            Array.from(QuickMoneyOptions.children).forEach((child) => {
+                child.removeEventListener("click", handleQuickMoney(child))
+                child.addEventListener("click", handleQuickMoney(child))
+            })
+        }
+
+        const handleSelectPaymentGateway = (event) => {
+            Array.from(PaymentMethodOptions.children).forEach((child) => {
+                child.classList.remove("action")
+                if (event.currentTarget.getAttribute("type") === child.getAttribute("type")) {
+                    child.classList.add("action")
+                }
+            })
+
+            handleCheckAndSelectPaymentMethod()
+        }
+
+        const handleNumericInput = (event) => {
+            const key = event.keyCode;
+            // Only allow numbers to be entered
+            if (key < 48 || key > 57) {
+                event.preventDefault();
+            }
+        }
+
+        const handleMoneyAmountInput = (event) => {
+            inputMoney = parseInt(MoneyAmountInput.value)
+        }
+
+        const handleQuickMoney = (item) => (event) => {
+            const amount = parseInt(item.getAttribute("data-money"))
+
+            inputMoney = amount
+            MoneyAmountInput.value = amount
+
+            Array.from(QuickMoneyOptions.children).forEach((child) => {
+                child.classList.remove("action")
+            })
+
+            item.classList.add("action")
+        }
+
+        const handleDepositFund = (event) => {
+            const minimumMoneyAllowed = parseInt(`<%=MinimumMoney%>`)
+
+            if (!inputMoney || !(inputMoney >= minimumMoneyAllowed)) {
+                alertMessage(`Money is Required and it should be ₹${minimumMoneyAllowed} or above!`)
+                return
+            }
+
+            switch (selectedPaymentMethod) {
+                case PaymentMethodsMap.UPI_GATEWAY:
+                    handleUPIGatewayPaymentRequest(inputMoney)
+                    break;
+                case PaymentMethodsMap.WOW_PAY:
+                    handleWowPayPaymentRequest(inputMoney)
+                    break;
+                case PaymentMethodsMap.MANUAL_PAY:
+                    handleManualUPIPaymentRequest(inputMoney)
+                    break;
+                case PaymentMethodsMap.USDT_MANUAL:
+                    handleManualUSDTPaymentRequest(inputMoney)
+                    break;
+                case PaymentMethodsMap.USDT:
+                    handleUSDTPaymentRequest(inputMoney)
+                    break;
+            }
+        }
+
+        const handleUPIGatewayPaymentRequest = async (moneyAmount) => {
+
+            const response = await axios.post("/wallet/paynow/upi", {
+                money: moneyAmount
+            })
+
+            const data = response?.data
+
+            if (data === undefined || data === null) {
+                alertMessage("Something went wrong!")
+                return
+            }
+
+            if (data?.status === false) {
+                alertMessage(data?.message)
+                return
+            }
+
+            window.location.href = data?.urls?.web_url
+        }
+
+        const handleWowPayPaymentRequest = async (moneyAmount) => {
+            try {
+                const response = await axios.post(`/wallet/paynow/wowpay?money=${moneyAmount}`)
+
+                const data = response?.data
+
+                if (data === undefined || data === null) {
+                    alertMessage("Something went wrong!")
+                    return
+                }
+
+
+                if (data?.status === false) {
+                    alertMessage(data?.message)
+                    return
+                }
+
+                window.location.href = data?.payment_url
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        const handleManualUSDTPaymentRequest = async (moneyAmount) => {
+            window.location.href = `/wallet/paynow/manual_usdt?am=${moneyAmount}`
+        }
+
+        const handleManualUPIPaymentRequest = async (moneyAmount) => {
+            window.location.href = `/wallet/paynow/manual_upi?am=${moneyAmount}`
+        }
+
+        const handleUSDTPaymentRequest = async (moneyAmount) => {
+
+        }
+
+        // Below code will run on Page Load 
+        handleSetTotalBalance()
+        handleCheckAndSelectPaymentMethod()
+        handleMoneyAmountInput()
+        // --------------------------------
+
+        // Even Listeners
+        ReloadMoneyAmountButton.addEventListener("click", handleSetTotalBalance)
+
+        Array.from(PaymentMethodOptions.children).forEach((child) => {
+            if (Array.from(child.classList).includes("disabled")) return
+
+            child.addEventListener("click", handleSelectPaymentGateway)
+        })
+
+        MoneyAmountInput.addEventListener("input", handleMoneyAmountInput)
+
+        MoneyAmountInput.addEventListener("keypress", handleNumericInput);
+
+        DepositFundButton.addEventListener("click", handleDepositFund);
+
+        /* Some Event Listeners added in handleCheckAndSelectPaymentMethod function */
+        // --------------
+
+    </script>
+</body>
+
+</html>

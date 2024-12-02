@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin the Wheel</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #2B3270;
+        }
+        .heading {
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .wheel {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto;
+            transform-origin: center;
+            transform: rotate(-22.5deg); /* Adjust initial rotation to align a section to the top */
+        }
+        .segment {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color: transparent;
+            transform-origin: 100% 100%;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+        }
+        .pointer {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 40px solid red;
+            position: absolute;
+            top: 290px;
+            left: calc(50% - 20px);
+            z-index: 10;
+        }
+        .spin-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 15%;
+            font-size: 20px;
+            cursor: pointer;
+            width: 67px;
+            height: 48px;
+            margin-top: 37px;
+        }
+        .spin-button:hover {
+            background-color: #45A049;
+        }
+        .segment-text {
+            position: absolute;
+            left: 60%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+        .win-display {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading">Welcome to Spin Casino</div>
+    <div class="win-display" id="winDisplay">Playing charge game :Rs. 10 <br><br>Winning amount: Rs. 0</div>
+    <div class="container">
+        <div class="pointer"></div>
+        <div class="wheel" id="wheel"></div>
+        <button id="spinButton" class="spin-button">Go</button>
+    </div>
+
+    <!-- <script>
+        const initialAmounts = [1, 100, 2, 10, 15, 20, 30, 50]; // Initial values
+        const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#33FFF4", "#FFBD33", "#57FF33", "#8D33FF"]; // Unique colors
+        let amounts = [...initialAmounts]; // Copy of initial amounts
+        const wheel = document.getElementById('wheel');
+        const winDisplay = document.getElementById('winDisplay');
+        let currentRotation = 0;
+
+        // Shuffle function for randomizing array elements
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Function to dynamically create segments
+        function createSegments() {
+            wheel.innerHTML = ''; // Clear previous segments
+            amounts.forEach((amount, index) => {
+                const segment = document.createElement('div');
+                segment.classList.add('segment');
+                segment.style.backgroundColor = colors[index];
+                segment.style.transform = `rotate(${index * (360 / amounts.length)}deg)`; // Adjust segment rotation
+                
+                const text = document.createElement('div');
+                text.classList.add('segment-text');
+                text.innerHTML = `${amount}`;
+                segment.appendChild(text);
+                
+                wheel.appendChild(segment);
+            });
+        }
+
+        createSegments(); // Initialize segments for the first time
+
+        const spinButton = document.getElementById('spinButton');
+        
+        spinButton.addEventListener('click', () => {
+            shuffleArray(amounts); // Shuffle the values
+            createSegments(); // Update the segments with shuffled values
+
+            const randomDegree = Math.floor(Math.random() * 360 + 1800); // Random degree ensures multiple rotations
+            currentRotation += randomDegree;
+            wheel.style.transition = 'transform 4s ease-out'; // Smooth spinning
+            wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+            setTimeout(() => {
+                const totalSegments = amounts.length;
+                const degreesPerSegment = 360 / totalSegments;
+                
+                // Normalize the rotation to within 360 degrees
+                const normalizedRotation = currentRotation % 360;
+
+                // Find the index of the segment where the pointer lands (adjust to account for initial rotation)
+                const stopIndex = Math.floor((360 - normalizedRotation) / degreesPerSegment) % totalSegments;
+                const winningIndex = (stopIndex - 3 + totalSegments) % totalSegments;
+                const selectedAmount = amounts[winningIndex];
+
+                // Display the winning amount in the UI
+                winDisplay.innerHTML = `Winning amount: Rs. ${selectedAmount}`;
+
+                // Send the selected winning amount to the backend for balance update
+                fetch('/spin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ winningAmount: selectedAmount })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server response:', data);
+                    winDisplay.innerHTML = `Playing Charge : Rs. 10 <br>Winning amount: Rs. ${selectedAmount}.<br> Updated balance: Rs. ${data.updatedMoney}`;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            }, 4000); // Delay corresponds to the transition time
+        });
+    </script> -->
+
+    <script>
+        const initialAmounts = [1, 100, 2, 10, 15, 20, 30, 50]; // Initial values
+        const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#33FFF4", "#FFBD33", "#57FF33", "#8D33FF"]; // Unique colors
+        let amounts = [...initialAmounts]; // Copy of initial amounts
+        const wheel = document.getElementById('wheel');
+        const winDisplay = document.getElementById('winDisplay');
+        let currentRotation = 0;
+    
+        // Shuffle function for randomizing array elements
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+    
+        // Function to dynamically create segments
+        function createSegments() {
+            wheel.innerHTML = ''; // Clear previous segments
+            amounts.forEach((amount, index) => {
+                const segment = document.createElement('div');
+                segment.classList.add('segment');
+                segment.style.backgroundColor = colors[index];
+                segment.style.transform = `rotate(${index * (360 / amounts.length)}deg)`; // Adjust segment rotation
+                
+                const text = document.createElement('div');
+                text.classList.add('segment-text');
+                text.innerHTML = `${amount}`;
+                segment.appendChild(text);
+                
+                wheel.appendChild(segment);
+            });
+        }
+    
+        createSegments(); // Initialize segments for the first time
+    
+        const spinButton = document.getElementById('spinButton');
+        
+        spinButton.addEventListener('click', () => {
+            shuffleArray(amounts); // Shuffle the values
+            createSegments(); // Update the segments with shuffled values
+    
+            const randomDegree = Math.floor(Math.random() * 360 + 1800); // Random degree ensures multiple rotations
+            currentRotation += randomDegree;
+            wheel.style.transition = 'transform 4s ease-out'; // Smooth spinning
+            wheel.style.transform = `rotate(${currentRotation}deg)`;
+    
+            setTimeout(() => {
+                const totalSegments = amounts.length;
+                const degreesPerSegment = 360 / totalSegments;
+                
+                // Normalize the rotation to within 360 degrees
+                const normalizedRotation = currentRotation % 360;
+    
+                // Find the index of the segment where the pointer lands (adjust to account for initial rotation)
+                const stopIndex = Math.floor((360 - normalizedRotation) / degreesPerSegment) % totalSegments;
+                const winningIndex = (stopIndex - 3 + totalSegments) % totalSegments;
+                const selectedAmount = amounts[winningIndex];
+    
+                // Display the winning amount in the UI
+                winDisplay.innerHTML = `Winning amount: Rs. ${selectedAmount}`;
+    
+                // Send the selected winning amount to the backend for balance update
+                fetch('/spin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ winningAmount: selectedAmount })
+                })
+                .then(response => {
+                    if (response.status === 403) {
+                        // If the user has already spun today, show the message
+                        return response.json().then(data => {
+                            winDisplay.innerHTML = `${data.message}`;
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.updatedMoney) {
+                        winDisplay.innerHTML = `Playing Charge : Rs. 10 <br>Winning amount: Rs. ${selectedAmount}.<br> Updated balance: Rs. ${data.updatedMoney}`;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            }, 4000); // Delay corresponds to the transition time
+        });
+    </script>
+    
+</body>
+</html>

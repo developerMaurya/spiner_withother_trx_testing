@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html translate="no" data-dpr="1" style="font-size: 48.24px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex,nofollow">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <title>DELTIN JAQK</title>
+    <link rel="stylesheet" href="./index_files/index-96409872.css">
+    <link href="/css/promotion/app.css" rel="stylesheet" />
+    <link href="/css/promotion/chunk-0_1.css" rel="stylesheet" />
+    <link href="/css/promotion/chunk-0_2.css" rel="stylesheet" />
+    <link href="/css/promotion/chunk-0_3.css" rel="stylesheet" />
+    <link href="/css/promotion/chunk-0_4.css" rel="stylesheet" />
+    <link href="/css/promotion/chunk-0_5.css" rel="stylesheet" />
+    <link href="/css/promotion/chunk-0_6.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/images/bitbug_favicon.ico" type="image/x-icon">
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: #090909;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .mian .box .list .item[data-v-8c7eba72] {
+
+            background: #2b3270 !important;
+        }
+
+        .mian .box .list .item .money[data-v-8c7eba72] {
+            color: #48c5f2 !important;
+        }
+    </style>
+</head>
+
+<body style="font-size: 12px;">
+    <div id="app">
+        <div data-v-8c7eba72="" class="mian">
+            <div data-v-106b99c8="" data-v-8c7eba72="" class="navbar">
+                <div data-v-106b99c8="" class="navbar-left" onclick="location.href='/promotion'">
+                    <div data-v-106b99c8="" class="bank c-row c-row-middle-center">
+                        <i class="fa-light fa-angle-left fa-fade fa-xl center" style="color: #FFF"></i>
+                    </div>
+                </div>
+                <div data-v-106b99c8="" class="navbar-title">Registered Downline</div>
+                <div data-v-106b99c8="" class="navbar-right"></div>
+            </div>
+            <div data-v-8c7eba72="" class="box">
+                <div data-v-8c7eba72="" class="list m-b-10">
+                    <div data-v-8c7eba72="" role="feed" class="van-list">
+                        <div id="van-list">
+
+                        </div>
+                        <div data-v-a9660e98="" class="p-t-5 p-b-5">
+                            <div data-v-a9660e98="" class="van-empty">
+                                <div class="van-empty__image">
+                                    <img src="/images/empty-image-default.png" />
+                                </div>
+                                <div class="van-list__finished-text">No More Data</div>
+                                <div class="van-list__placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-v-7692a079="" data-v-8c7eba72="" class="Loading c-row c-row-middle-center"
+                        style="display: none;">
+                        <div data-v-7692a079="" class="van-loading van-loading--circular">
+                            <span data-v-7692a079="" class="van-loading__spinner van-loading__spinner--circular"
+                                style="width: auto; height: auto; -webkit-animation-duration: 1s; animation-duration: 1s;">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 200 200" width="200" height="200" preserveAspectRatio="xMidYMid meet"
+                                    style="width: 100%;height: 100%;transform: translate3d(0px, 0px, 0px);content-visibility: visible;">
+                                    <g transform="matrix(-0.5984085202217102,0.8011911511421204,-0.8011911511421204,-0.5984085202217102,239.9599609375,79.72173309326172)"
+                                        style="display: block;">
+                                        <image width="200px" height="200px" preserveAspectRatio="xMidYMid slice"
+                                            xlink:href="/index_files/loadingspinner.png"></image>
+                                    </g>
+                                    <g transform="matrix(0.9408400058746338,0,0,0.9408400058746338,20.969436645507812,79.30152130126953)"
+                                        style="display: block;">
+                                        <image width="168px" height="44px" preserveAspectRatio="xMidYMid slice"
+                                            xlink:href="/index_files/h5setting_202401100608011fs2.png"></image>
+                                    </g>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <%- include('../nav') -%>
+                </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@master/qrcode.js"></script>
+            <script src="/js/client.js"></script>
+            <script>
+                function formateT(params) {
+                    let result = (params < 10) ? "0" + params : params;
+                    return result;
+                }
+
+                function timerJoin(params = '', addHours = 0) {
+                    let date = '';
+                    if (params) {
+                        date = new Date(Number(params));
+                    } else {
+                        date = new Date();
+                    }
+
+                    date.setHours(date.getHours() + addHours);
+
+                    let years = formateT(date.getFullYear());
+                    let months = formateT(date.getMonth() + 1);
+                    let days = formateT(date.getDate());
+
+                    let hours = date.getHours() % 12;
+                    hours = hours === 0 ? 12 : hours;
+                    let ampm = date.getHours() < 12 ? "AM" : "PM";
+
+                    let minutes = formateT(date.getMinutes());
+                    let seconds = formateT(date.getSeconds());
+
+                    return years + '-' + months + '-' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+                }
+                $('.nav .van-tabbar-item:eq(0) img').attr('src', '/images/home1.png');
+                $('.nav .van-tabbar-item:eq(0) .name').removeClass('action');
+                $('.nav .van-tabbar-item:eq(2) .name').addClass('action');
+                function MemRender(datas) {
+                    let html = '';
+                    datas.map((data) => {
+                        html += `
+                        <div data-v-8c7eba72="" class="item c-row c-row-between c-row-middle m-b-5">
+                            <div data-v-8c7eba72="">
+                                <div data-v-8c7eba72="" class="money"> ${data.id_user} (${data.phone}) </div>
+                            </div>
+                            <div data-v-8c7eba72="">
+                                <div data-v-8c7eba72="" class="state m-b-5">
+                                    <span data-v-8c7eba72="" style="color: rgb(153, 153, 153);">${timerJoin(data.time)}</span>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                    });
+                    $('#van-list').html(html);
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/webapi/myTeam",
+                    dataType: "json",
+                    success: function (response) {
+                        MemRender(response.mem);
+                    }
+                });
+            </script>
+</body>
+
+</html>
